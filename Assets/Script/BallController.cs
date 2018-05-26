@@ -4,6 +4,7 @@ public class BallController : MonoBehaviour
 {
     public float speed = 10;
     public float speedUpRate = 1.1f;
+    public int speedUpCollisionCount = 10;
     private int collisionCount;
 
     private void Start()
@@ -15,7 +16,7 @@ public class BallController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         collisionCount += 1;
-        if (collisionCount > 10)
+        if (collisionCount > speedUpCollisionCount)
         {
             GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity * speedUpRate;
             collisionCount = 0;
